@@ -14,22 +14,24 @@ const config: Config = {
         heading: ["var(--font-heading)", ...fontFamily.sans],
       },
       colors: {
-        brand: {
-          "25": "#F8F9FD",
-          "50": "#F0F4FA",
-          "100": "#E1E9F6",
-          "200": "#C3D3ED",
-          "300": "#A5BDE4",
-          "400": "#87A7DB",
-          "500": "#6991D2",
-          "600": "#4B76C9",
-          "700": "#3659B1",
-          "800": "#284189",
-          "900": "#1B2A61",
-          "950": "#111A3E",
+        "brand": {
+          "25": "#F4FAF5",
+          "50": "#E8F5F0",
+          "100": "#D1EAF0",
+          "200": "#A3D5E5",
+          "300": "#75C1DA",
+          "400": "#47ADC4",
+          "500": "#1A98A9",
+          "600": "#148384",
+          "700": "#106768",
+          "800": "#0C4D4D",
+          "900": "#083232",
+          "950": "#041919"
         },
+
+
         "discord-background": "#36393f",
-		"discord-brand-color": "#5865f2",
+        "discord-brand-color": "#5865f2",
         "discord-gray": "#36393f",
         "discord-text": "#dcddde",
         "discord-timestamp": "#72767d",

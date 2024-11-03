@@ -1,6 +1,8 @@
+"use client";
+
 import { Heading } from "@/components/heading"
 import { MaxWidthWrapper } from "@/components/max-width-wrapper"
-import { Check, Star } from "lucide-react"
+import { Check, Star, Clipboard } from "lucide-react"
 import { ShinyButton } from "@/components/shiny-button"
 import { MockDiscordUI } from "@/components/mock-discord-ui"
 import { AnimatedList, AnimatedListItem } from "@/components/ui/animated-list"
@@ -9,8 +11,11 @@ import Image from "next/image"
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism"
 import { Icons } from "@/components/icons"
+import { useState } from "react"
+
 
 const Page = () => {
+  const [copied, setCopied] = useState(false);
   const codeSnippet = `await fetch("http://localhost:3000/api/v1/events", {
   method: "POST",
   body: JSON.stringify({
@@ -24,7 +29,13 @@ const Page = () => {
   headers: {
     Authorization: "Bearer <YOUR_API_KEY>"
   }
-})`
+})`;
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(codeSnippet);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1500); // Show "Copied!" message for 1.5 seconds
+  };
 
   return (
     <>
@@ -33,24 +44,24 @@ const Page = () => {
           <div className="relative mx-auto text-center flex flex-col items-center gap-10">
             <div>
               <Heading>
-                <span>Real-Time SaaS Insights,</span>
+                <span>SaaS Metrics Delivered</span>
                 <br />
-                <span className="relative bg-gradient-to-r from-brand-700 to-brand-800 text-transparent bg-clip-text">
-                  Delivered to Your Discord
+                <span className="relative bg-gradient-to-r from-brand-500 to-brand-800 text-transparent bg-clip-text">
+                  Whenever, Wherever
                 </span>
               </Heading>
             </div>
 
-            <p className="text-base/7 text-gray-600 max-w-prose text-center text-pretty">
+            <p className="text-base/7 text-brand-800 max-w-prose text-center text-pretty">
               PingLy is the easiest way to monitor your SaaS. Get instant
               notifications for{" "}
-              <span className="font-semibold text-gray-700">
+              <span className="font-semibold text-brand-800">
                 sales, new users, or any other event
               </span>{" "}
               sent directly to your Discord.
             </p>
 
-            <ul className="space-y-2 text-base/7 text-gray-600 text-left flex flex-col items-start">
+            <ul className="space-y-2 text-base/7 text-brand-800 text-left flex flex-col items-start">
               {[
                 "Real-time Discord alerts for critical events",
                 "Buy once, use forever",
@@ -245,12 +256,27 @@ const Page = () => {
                       <div className="-mb-px flex text-sm/6 font-medium text-gray-400">
                         <div className="border-b border-r border-b-white/20 border-r-white/10 bg-white/5 px-4 py-2 text-white">
                           PingLy.js
+                          {/* Paste Icon */}
+                          <button
+                            onClick={handleCopy}
+                            className="absolute top-2 right-2 p-1 bg-gray-800 rounded text-white hover:bg-gray-700"
+                            title="Copy to Clipboard"
+                          >
+                            <Clipboard size={20} />
+                          </button>
+                          {/* Copied Feedback */}
+                          {copied && (
+                            <div className="absolute top-2 right-10 text-white text-sm">
+                              Copied!
+                            </div>
+                          )}
                         </div>
                       </div>
                     </div>
 
                     <div className="overflow-hidden">
-                      <div className="max-h-[30rem]">
+                      <div className="relative max-h-[30rem]">
+
                         <SyntaxHighlighter
                           language="typescript"
                           style={{
