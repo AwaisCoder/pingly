@@ -15,13 +15,13 @@ const Page = () => {
   const router = useRouter()
 
   const INCLUDED_FEATURES = [
-    "10.000 real-time events per month",
+    "10,000 real-time events per month",
     "10 event categories",
     "Advanced analytics and insights",
     "Priority support",
   ]
 
-  const { mutate: createCheckoutSession } = useMutation({
+  const { mutate: initiateCheckoutSession } = useMutation({
     mutationFn: async () => {
       const res = await client.payment.createCheckoutSession.$post()
       return await res.json()
@@ -33,7 +33,7 @@ const Page = () => {
 
   const handleGetAccess = () => {
     if (user) {
-      createCheckoutSession()
+      initiateCheckoutSession()
     } else {
       router.push("/sign-in?intent=upgrade")
     }

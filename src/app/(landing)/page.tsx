@@ -3,7 +3,7 @@
 import { Heading } from "@/components/heading"
 import { MaxWidthWrapper } from "@/components/max-width-wrapper"
 import { Check, Star, Clipboard } from "lucide-react"
-import { ShinyButton } from "@/components/shiny-button"
+import ShinyButton from "@/components/shiny-button"
 import { MockDiscordUI } from "@/components/mock-discord-ui"
 import { AnimatedList, AnimatedListItem } from "@/components/ui/animated-list"
 import { DiscordMessage } from "@/components/discord-message"
@@ -40,51 +40,73 @@ const Page = () => {
   return (
     <>
       <section className="relative py-24 sm:py-32 bg-brand-25">
-        <MaxWidthWrapper className="text-center">
-          <div className="relative mx-auto text-center flex flex-col items-center gap-10">
-            <div>
-              <Heading>
-                <span>SaaS Metrics Delivered</span>
-                <br />
-                <span className="relative bg-gradient-to-r from-brand-500 to-brand-800 text-transparent bg-clip-text">
-                  Whenever, Wherever
-                </span>
-              </Heading>
+        <MaxWidthWrapper className="text-left">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Left Section */}
+            <div className="relative mx-auto flex flex-col items-start gap-10">
+              <div>
+                <Heading>
+                  <span>SaaS Metrics Delivered</span>
+                  <br />
+                  <span className="relative bg-gradient-to-r from-brand-500 to-brand-800 text-transparent bg-clip-text">
+                    Whenever, Wherever
+                  </span>
+                </Heading>
+              </div>
+
+              <p className="text-base/7 text-brand-800 max-w-prose text-left text-pretty">
+                PingLy is the easiest way to monitor your SaaS. Get instant
+                notifications for{" "}
+                <span className="font-semibold text-brand-800">
+                  sales, new users, or any other event
+                </span>{" "}
+                sent directly to your Discord.
+              </p>
+
+              <ul className="space-y-2 text-base/7 text-brand-800 text-left flex flex-col items-start">
+                {[
+                  "Real-time Discord alerts for critical events",
+                  "Buy once, use forever",
+                  "Track sales, new users, or any other event",
+                ].map((item, index) => (
+                  <li key={index} className="flex gap-1.5 items-center">
+                    <Check className="size-5 shrink-0 text-brand-700" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+
+              <div className="w-full max-w-80">
+                <ShinyButton
+                  href="/sign-up"
+                  className="relative z-10 h-14 w-full text-base shadow-lg transition-shadow duration-300 hover:shadow-xl"
+                >
+                  Start For Free Today
+                </ShinyButton>
+              </div>
             </div>
 
-            <p className="text-base/7 text-brand-800 max-w-prose text-center text-pretty">
-              PingLy is the easiest way to monitor your SaaS. Get instant
-              notifications for{" "}
-              <span className="font-semibold text-brand-800">
-                sales, new users, or any other event
-              </span>{" "}
-              sent directly to your Discord.
-            </p>
-
-            <ul className="space-y-2 text-base/7 text-brand-800 text-left flex flex-col items-start">
-              {[
-                "Real-time Discord alerts for critical events",
-                "Buy once, use forever",
-                "Track sales, new users, or any other event",
-              ].map((item, index) => (
-                <li key={index} className="flex gap-1.5 items-center text-left">
-                  <Check className="size-5 shrink-0 text-brand-700" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-
-            <div className="w-full max-w-80">
-              <ShinyButton
-                href="/sign-up"
-                className="relative z-10 h-14 w-full text-base shadow-lg transition-shadow duration-300 hover:shadow-xl"
-              >
-                Start For Free Today
-              </ShinyButton>
+            {/* Right Section */}
+            <div className="flex flex-col items-center space-y-6 p-6 bg-white rounded-lg shadow-md">
+              <h2 className="text-2xl font-semibold text-brand-700">PingLy: Your SaaS Assistant in Action!</h2>
+              <div className="w-full max-w-[640px]">
+                <div className="relative" style={{ paddingBottom: "56.25%" }}>
+                  <iframe
+                    src="https://www.youtube.com/embed/your-video-id"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="absolute top-0 left-0 w-full h-full rounded-lg"
+                  ></iframe>
+                </div>
+              </div>
+              <p className="text-sm text-brand-700 text-center">
+                Learn how PingLy showcases your SaaS insights in under 2 minutes.
+              </p>
             </div>
           </div>
         </MaxWidthWrapper>
       </section>
+
 
       <section className="relative bg-brand-25 pb-4">
         <div className="absolute inset-x-0 bottom-24 top-24 bg-brand-700" />
@@ -169,7 +191,7 @@ const Page = () => {
                   <div className="absolute inset-x-10 bottom-0 top-10 overflow-hidden rounded-t-[12cqw] border-x-[3cqw] border-t-[3cqw] border-gray-700 bg-gray-900 shadow-2xl">
                     <Image
                       className="size-full object-cover object-top"
-                      src="/phone-screen.png"
+                      src="/phone-screen2.png"
                       alt="Phone screen displaying app interface"
                       fill
                     />
@@ -266,10 +288,12 @@ const Page = () => {
                           </button>
                           {/* Copied Feedback */}
                           {copied && (
-                            <div className="absolute top-2 right-10 text-white text-sm">
+                            <div className="absolute top-2 right-10 flex items-center gap-1 text-gray-400 text-sm">
+                              <Check className="size-5 shrink-0 text-gray-400" />
                               Copied!
                             </div>
                           )}
+
                         </div>
                       </div>
                     </div>
@@ -315,26 +339,24 @@ const Page = () => {
             <Heading className="text-center">What our customers say</Heading>
           </div>
 
-          <div className="mx-auto grid max-w-2xl grid-cols-1 px-4 lg:mx-0 lg:max-w-none lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-gray-200">
+          <div className="mx-auto grid max-w-2xl grid-cols-1 px-4 lg:mx-0 lg:max-w-none lg:grid-cols-3 divide-y lg:divide-y-0 lg:divide-x divide-gray-200">
             {/* first customer review */}
-            <div className="flex flex-auto flex-col gap-4 bg-brand-25 p-6 sm:p-8 lg:p-16 rounded-t-[2rem] lg:rounded-tr-none lg:rounded-l-[2rem]">
+            <div className="flex flex-auto flex-col gap-4 bg-brand-25 p-6 sm:p-8 lg:p-16 rounded-[2rem]">
               <div className="flex gap-0.5 mb-2 justify-center lg:justify-start">
-                <Star className="size-5 text-brand-600 fill-brand-600" />
-                <Star className="size-5 text-brand-600 fill-brand-600" />
-                <Star className="size-5 text-brand-600 fill-brand-600" />
-                <Star className="size-5 text-brand-600 fill-brand-600" />
-                <Star className="size-5 text-brand-600 fill-brand-600" />
+                <Star className="size-5 text-yellow-600 fill-yellow-300" />
+                <Star className="size-5 text-yellow-600 fill-yellow-300" />
+                <Star className="size-5 text-yellow-600 fill-yellow-300" />
+                <Star className="size-5 text-yellow-600 fill-yellow-300" />
+                <Star className="size-5 text-yellow-600 fill-white" />
               </div>
 
               <p className="text-base sm:text-lg lg:text-lg/8 font-medium tracking-tight text-brand-950 text-center lg:text-left text-pretty">
-                PingLy has been a game-changer for me. I've been using it for
-                two months now and seeing sales pop up in real-time is super
-                satisfying.
+                PingLy has been a game-changer for me. I've been using it for two months now and seeing sales pop up in real-time is super satisfying.
               </p>
 
               <div className="flex flex-col justify-center lg:justify-start sm:flex-row items-center sm:items-start gap-4 mt-2">
                 <Image
-                  src="/user-2.png"
+                  src="/user1.png"
                   className="rounded-full object-cover"
                   alt="Random user"
                   width={48}
@@ -342,33 +364,31 @@ const Page = () => {
                 />
                 <div className="flex flex-col items-center sm:items-start">
                   <p className="font-semibold flex items-center">
-                    Freya Larsson
+                    Tayeba
                     <Icons.verificationBadge className="size-4 inline-block ml-1.5" />
                   </p>
-                  <p className="text-sm text-gray-600">@itsfreya</p>
+                  <p className="text-sm text-gray-600">@itstayebac97</p>
                 </div>
               </div>
             </div>
 
             {/* second customer review */}
-            <div className="flex flex-auto flex-col gap-4 bg-brand-25 p-6 sm:p-8 lg:p-16 rounded-b-[2rem] lg:rounded-bl-none lg:rounded-r-[2rem]">
+            <div className="flex flex-auto flex-col gap-4 bg-brand-25 p-6 sm:p-8 lg:p-16 rounded-[2rem]">
               <div className="flex gap-0.5 mb-2 justify-center lg:justify-start">
-                <Star className="size-5 text-brand-600 fill-brand-600" />
-                <Star className="size-5 text-brand-600 fill-brand-600" />
-                <Star className="size-5 text-brand-600 fill-brand-600" />
-                <Star className="size-5 text-brand-600 fill-brand-600" />
-                <Star className="size-5 text-brand-600 fill-brand-600" />
+                <Star className="size-5 text-yellow-600 fill-yellow-300" />
+                <Star className="size-5 text-yellow-600 fill-yellow-300" />
+                <Star className="size-5 text-yellow-600 fill-yellow-300" />
+                <Star className="size-5 text-yellow-600 fill-yellow-300" />
+                <Star className="size-5 text-yellow-600 fill-yellow-300" />
               </div>
 
               <p className="text-base sm:text-lg lg:text-lg/8 font-medium tracking-tight text-brand-950 text-center lg:text-left text-pretty">
-                PingLy's been paying off for our SaaS. Nice to have simple
-                way to see how we're doing day-to-day. Definitely makes our
-                lives easier.
+                PingLy's been paying off for our SaaS. Nice to have a simple way to see how we're doing day-to-day. Definitely makes our lives easier.
               </p>
 
               <div className="flex flex-col justify-center lg:justify-start sm:flex-row items-center sm:items-start gap-4 mt-2">
                 <Image
-                  src="/user-1.png"
+                  src="/user2.png"
                   className="rounded-full object-cover"
                   alt="Random user"
                   width={48}
@@ -376,14 +396,51 @@ const Page = () => {
                 />
                 <div className="flex flex-col items-center sm:items-start">
                   <p className="font-semibold flex items-center">
-                    Kai Durant
+                    Aaryan Sharma
                     <Icons.verificationBadge className="size-4 inline-block ml-1.5" />
                   </p>
-                  <p className="text-sm text-gray-600">@kdurant_</p>
+                  <p className="text-sm text-gray-600">@_aaryan05_</p>
+                </div>
+              </div>
+            </div>
+
+            {/* third customer review */}
+            <div className="flex flex-auto flex-col gap-4 bg-brand-25 p-6 sm:p-8 lg:p-16 rounded-[2rem]">
+              <div className="flex gap-0.5 mb-2 justify-center lg:justify-start">
+                <Star className="size-5 text-yellow-600 fill-yellow-300" />
+                <Star className="size-5 text-yellow-600 fill-yellow-300" />
+                <Star className="size-5 text-yellow-600 fill-yellow-300" />
+                <Star className="size-5 text-yellow-600 fill-yellow-300" />
+                <div className="relative">
+                  <Star className="size-5 text-yellow-600 fill-yellow-300" />
+                  <Star className="size-5 text-yellow-600 fill-white absolute top-0 left-0 clip-half" />
+                </div>
+              </div>
+
+
+              <p className="text-base sm:text-lg lg:text-lg/8 font-medium tracking-tight text-brand-950 text-center lg:text-left text-pretty">
+                Tracking metrics is much easier now with PingLy. The user-friendly interface has significantly streamlined our processes.
+              </p>
+
+              <div className="flex flex-col justify-center lg:justify-start sm:flex-row items-center sm:items-start gap-4 mt-2">
+                <Image
+                  src="/user3.png"
+                  className="rounded-full object-cover"
+                  alt="Random user"
+                  width={48}
+                  height={48}
+                />
+                <div className="flex flex-col items-center sm:items-start">
+                  <p className="font-semibold flex items-center">
+                    Noaman Hakim
+                    <Icons.verificationBadge className="size-4 inline-block ml-1.5" />
+                  </p>
+                  <p className="text-sm text-gray-600">@nomu2540</p>
                 </div>
               </div>
             </div>
           </div>
+
 
           <ShinyButton
             href="/sign-up"
