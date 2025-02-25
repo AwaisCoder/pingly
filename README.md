@@ -1,5 +1,3 @@
-
-
 # Pingly - Real-Time SaaS Insights Delivered to Your Discord
 
 Pingly is a streamlined, user-friendly platform designed to help SaaS developers and teams monitor key metrics in real-time. With Pingly, you get instant notifications for critical events, like new user registrations or sales, sent directly to your Discord channel. Stay updated and make better, faster decisions for your SaaS products.
@@ -17,7 +15,7 @@ Pingly is a streamlined, user-friendly platform designed to help SaaS developers
 - **Icons**: Lucide React
 - **Utilities**: Custom reusable components with dynamic styling via Tailwind's `cn` function
 - **API**: To be integrated based on SaaS product requirements
-- **Hosting/Cloud Services**: Azure 
+- **Hosting/Cloud Services**: Azure
 
 ## Getting Started
 
@@ -54,7 +52,7 @@ Pingly is a streamlined, user-friendly platform designed to help SaaS developers
    ```bash
    npm run dev
    # or
-   yarn dev
+
    ```
 
 5. Open [http://localhost:3001](http://localhost:3000) in your browser to see the project running.
@@ -64,7 +62,6 @@ Pingly is a streamlined, user-friendly platform designed to help SaaS developers
 - **Homepage**: Displays key information about the platform, with real-time stats.
 - **Navigation**: Quickly navigate between features, pricing, and contact pages.
 - **Interactive UI**: Test out buttons like the "Shiny Button" for a live preview of animations and effects.
-
 
 ## License
 
